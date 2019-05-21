@@ -74,6 +74,8 @@ public class Setup extends AppCompatActivity {
         }
     }
 
+
+
     public void doneButtonClicked(View view){
         final String name = editDPName.getText().toString().trim();
         final String user_id = mAuth.getCurrentUser().getUid();
@@ -85,12 +87,16 @@ public class Setup extends AppCompatActivity {
                     String url = taskSnapshot.getDownloadUrl().toString();
                      mDatabaseusers.child(user_id).child("name").setValue(name);
                      mDatabaseusers.child(user_id).child("image").setValue(url);
-                    Toast.makeText(Setup.this, "Completed task", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Setup.this, "Profile Updated, Go Back to Login", Toast.LENGTH_SHORT).show();
                 }
             });
 
 
 
         }
+    }
+    public void login(View view){
+        Intent intent = new Intent(Setup.this, Login.class);
+        startActivity(intent);
     }
 }
